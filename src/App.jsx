@@ -31,8 +31,8 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path='/' element={<> <Banner /> <Home addTowatchlater={addTowatchlater} removeTowatchlater={removeTowatchlater} /></>}></Route>
-          <Route path='/watchlater' element={<Watchlater watchlater={watchlater} />} ></Route>
+          <Route path='/' element={<> <Banner /> <Home addTowatchlater={addTowatchlater} removeTowatchlater={removeTowatchlater} watchlater={watchlater} /></>}></Route>
+          <Route path='/watchlater' element={<Watchlater watchlater={watchlater} removeTowatchlater={removeTowatchlater} />} ></Route>
         </Routes>
       </BrowserRouter>
     </>
