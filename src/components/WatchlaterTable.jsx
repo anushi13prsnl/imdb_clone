@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function WatchlaterTable({ watchlater }) {
+function WatchlaterTable({ watchlater, searchString }) {
   if (!Array.isArray(watchlater)) {
     return null
   }
+
+ 
 
   return (
     <div className='border border-gray-200 rounded-[10px] m-8'>
@@ -17,7 +19,11 @@ function WatchlaterTable({ watchlater }) {
           </tr>
         </thead>
         <tbody>
-          {watchlater.map((e) => (
+          {watchlater.filter((e)=>{
+            return(
+              e.title.toLowerCase().includes(searchString.toLowerCase())
+            )
+          }).map((e) => (
             <tr className='border w-full' key={e.id}>
               <td className='p-2'>
                 <div className='flex items-center justify-start gap-4'>

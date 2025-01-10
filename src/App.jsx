@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import './index.css'
@@ -8,7 +8,20 @@ import Watchlater from './components/Watchlater'
 import Banner from './components/Banner'
 
 const App = () => {
-  const [watchlater, setWatchlater] = useState([])
+  
+  // Retrieve the watchlater list from localStorage when the component mounts
+  const [watchlater, setWatchlater] = useState(() => {
+    const savedWatchlater = localStorage.getItem('watchlater')
+    return savedWatchlater ? JSON.parse(savedWatchlater) : []
+  })
+
+  // Save the watchlater list to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('watchlater', JSON.stringify(watchlater))
+  }, [watchlater])
+
+
+
 
   const addTowatchlater = (e) => {
     if (!Array.isArray(watchlater)) {

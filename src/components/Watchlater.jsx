@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import WatchlaterTable from './WatchlaterTable'
 
 function Watchlater({watchlater}) {
+
+  const [searchString, setSearchString] = useState('')
+  const handleSearch = (e) => {
+    setSearchString(e.target.value)
+  }
+
   return (
     <>
 
@@ -15,11 +21,11 @@ function Watchlater({watchlater}) {
 
     {/* input field */}
     <div className='flex justify-center mt-3'>
-    <input type="text" className=' bg-gray-100 w-[20vw] p-0.5 pl-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-300 ' placeholder='Search for a movie...' />
+    <input onChange={handleSearch} value={searchString} type="text" className=' bg-gray-100 w-[20vw] p-0.5 pl-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-300 ' placeholder='Search for a movie...' />
     </div>
 
     {/* Table */}
-    <WatchlaterTable watchlater={watchlater}/>
+    <WatchlaterTable watchlater={watchlater} searchString={searchString}/>
 
     </>
   )
