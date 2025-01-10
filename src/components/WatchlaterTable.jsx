@@ -1,11 +1,19 @@
 import React, { useState } from 'react'
 
-function WatchlaterTable({ watchlater, searchString }) {
+function WatchlaterTable({ watchlater, searchString, setWatchlater }) {
   if (!Array.isArray(watchlater)) {
     return null
   }
 
- 
+ const increasingOrderList = () => {
+  const sortedwatchlater = [...watchlater].sort((a, b) => a.vote_average - b.vote_average)
+  setWatchlater(sortedwatchlater)
+ }
+
+ const decreasingOrderList = () => {
+  const sortedwatchlater = [...watchlater].sort((a, b) => b.vote_average - a.vote_average)
+  setWatchlater(sortedwatchlater)
+ }
 
   return (
     <div className='border border-gray-200 rounded-[10px] m-8'>
@@ -13,7 +21,13 @@ function WatchlaterTable({ watchlater, searchString }) {
         <thead>
           <tr>
             <th>Item List</th>
-            <th><i className="fa-solid fa-circle-chevron-up hover:cursor-pointer"></i> Ratings <i className="fa-solid fa-circle-chevron-down hover:cursor-pointer"></i></th>
+            <th>
+
+            <i onClick={increasingOrderList} className="fa-solid fa-circle-chevron-up hover:cursor-pointer"></i> 
+            Ratings 
+            <i onClick={decreasingOrderList} className="fa-solid fa-circle-chevron-down hover:cursor-pointer"></i>
+
+            </th>
             <th>Popularity</th>
             <th>Genre</th>
           </tr>

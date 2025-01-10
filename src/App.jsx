@@ -8,7 +8,7 @@ import Watchlater from './components/Watchlater'
 import Banner from './components/Banner'
 
 const App = () => {
-  
+
   // Retrieve the watchlater list from localStorage when the component mounts
   const [watchlater, setWatchlater] = useState(() => {
     const savedWatchlater = localStorage.getItem('watchlater')
@@ -45,7 +45,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path='/' element={<> <Banner /> <Home addTowatchlater={addTowatchlater} removeTowatchlater={removeTowatchlater} watchlater={watchlater} /></>}></Route>
-          <Route path='/watchlater' element={<Watchlater watchlater={watchlater} removeTowatchlater={removeTowatchlater} />} ></Route>
+          <Route path='/watchlater' element={<Watchlater watchlater={watchlater} removeTowatchlater={removeTowatchlater} setWatchlater={setWatchlater}/>} ></Route>
         </Routes>
       </BrowserRouter>
     </>

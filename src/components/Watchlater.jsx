@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import WatchlaterTable from './WatchlaterTable'
 
-function Watchlater({watchlater}) {
+function Watchlater({watchlater, setWatchlater}) {
 
   const [searchString, setSearchString] = useState('')
   const handleSearch = (e) => {
@@ -25,7 +25,7 @@ function Watchlater({watchlater}) {
     </div>
 
     {/* Table */}
-    <WatchlaterTable watchlater={watchlater} searchString={searchString}/>
+    <WatchlaterTable watchlater={watchlater} searchString={searchString} setWatchlater={setWatchlater}/>
 
     </>
   )
